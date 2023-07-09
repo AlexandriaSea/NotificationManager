@@ -79,7 +79,7 @@
         #endregion
 
         private Button buttonManage;
-        public static Button buttonPublish;
+        private Button buttonPublish;
         private Button buttonExit;
     }
 }

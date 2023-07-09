@@ -18,6 +18,8 @@ namespace WenjieZhou_COMP212Lab2_Delegate
             InitializeComponent();
         }
 
+        public event EventHandler buttonClicked;
+
         private void buttonSubscribe_Click(object sender, EventArgs e)
         {
             // Set phone input format and capture textbox strings
@@ -82,6 +84,9 @@ namespace WenjieZhou_COMP212Lab2_Delegate
                     }
                 }
             }
+
+            // Invoke EventHandler
+            buttonClicked?.Invoke(this, EventArgs.Empty);
         }
 
         private void buttonUnsubscribe_Click(object sender, EventArgs e)
@@ -146,23 +151,14 @@ namespace WenjieZhou_COMP212Lab2_Delegate
                     }
                 }
             }
+
+            // Invoke EventHandler
+            buttonClicked?.Invoke(this, EventArgs.Empty);
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            // Uncheck checkbox and clear textbox and label
-            checkBoxEmail.Checked = false;
-            checkBoxSMS.Checked = false;
-            textBoxEmail.Clear();
-            textBoxSMS.Clear();
-            labelEmail.Text = "";
-            labelSMS.Text = "";
-            
-            // Change the button status of the static publish button to enabled if two subscriber lists are not empty
-            MainForm.buttonPublish.Enabled = (EmailSubscriber.emailSubscribers.Count > 0 || PhoneSubscriber.phoneSubscribers.Count > 0) ? true : false;
-            
-            // Avoiding launch new form in the future
-            this.Hide();
+            this.Close();
         }
     }
 }

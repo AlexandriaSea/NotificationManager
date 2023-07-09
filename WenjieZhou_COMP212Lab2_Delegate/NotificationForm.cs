@@ -46,11 +46,7 @@ namespace WenjieZhou_COMP212Lab2_Delegate
 
         private void buttonExit_Click(object sender, EventArgs e)
         {
-            // Clear the textbox
-            textBoxNotification.Clear();
-            
-            // Avoiding launch new form in the future
-            this.Hide();
+            this.Close();
         }
     }
 }
